@@ -23,18 +23,24 @@
   "ruff.lint.run": "onSave",
   "cSpell.words": [
     "asyncio",
+    "bradlc",
     "charliermarsh",
+    "dbaeumer",
+    "esbenp",
     "fastapi",
     "httpx",
     "ninoseki",
     "njqdev",
     "passlib",
+    "pflannery",
     "psycopg",
     "Pylance",
     "pylens",
     "pyproject",
     "pytest",
+    "tamasfe",
     "typehint",
+    "versionlens",
     "williamphelps"
   ]
 }
