@@ -9,7 +9,9 @@
 - `@repo/typescript-config`
 
 ## Commands
+
 ### Turborepo setup
+
 1. npm install turbo --global (allows using the turbo command)
 2. npx create-turbo@latest inventory (creates a Turborepo starter repo)
 3. cd inventory
@@ -17,152 +19,169 @@
 5. rm -rf apps/docs (removes the nextjs static docs repo that comes in the starter)
 
 ### FastAPI
+
 1. curl -sSL https://install.python-poetry.org | python3 (download poetry dependency management)
 2. echo 'export PATH="/Users/williamphelps/.local/bin:$PATH"' >> ~/.zshrc (adds poetry to the PATH to be able to be used)
-3.  poetry new apps/api
-4.  cd apps/api
-5.  pyproject.toml > [tool.poetry.dependencies]:
-    ```
-    bcrypt
-    cryptography
-    fastapi
-    httpx
-    passlib
-    psycopg2-binary
-    python-jose
-    python-multipart
-    SQLAlchemy
-    uvicorn
-    ```
-6.  pyproject.toml > [tool.poetry.group.dev.dependencies]:
-    ```
-    pytest
-    pytest-asyncio
-    ruff
-    ```
-7.  poetry install
-8.  touch package.json:
-    ```
-    {
-      "name": "api",
-      "version": "1.0.0",
-      "private": true,
-      "scripts": {
-        "dev": "poetry run uvicorn main:app --reload",
-        "lint": "ruff format"
-      }
-    }
-    ```
+3. poetry new apps/api
+4. cd apps/api
+5. pyproject.toml > [tool.poetry.dependencies]:
+   ```
+   bcrypt
+   cryptography
+   fastapi
+   httpx
+   passlib
+   psycopg2-binary
+   python-jose
+   python-multipart
+   SQLAlchemy
+   uvicorn
+   ```
+6. pyproject.toml > [tool.poetry.group.dev.dependencies]:
+   ```
+   pytest
+   pytest-asyncio
+   ruff
+   ```
+7. poetry install
+8. touch package.json:
+   ```
+   {
+     "name": "api",
+     "version": "1.0.0",
+     "private": true,
+     "scripts": {
+       "dev": "poetry run uvicorn main:app --reload",
+       "lint": "ruff format"
+     }
+   }
+   ```
 9. touch main database models
 10. mkdir routers && touch routers/auth routers/todos routers/users
 11. Create CRUD RESTful API with FastAPI...
 12. poetry run uvicorn main:app --reload
 
 ### Next.js
+
 1. cd packages
 2. mkdir tailwind-config
 3. cd tailwind-config
 4. touch package.json tailwind.config.ts tsconfig.json
 5. package.json:
-  ```
-  {
-     "name": "@repo/tailwind-config",
-     "version": "0.0.0",
-     "private": true,
-     "exports": {
-       ".": "./tailwind.config.ts"
-     },
-     "devDependencies": {
-       "@repo/typescript-config": "workspace:*",
-       "tailwindcss": "^3.4.0"
-     }
-  }
-  ```
+
+```
+{
+   "name": "@repo/tailwind-config",
+   "version": "0.0.0",
+   "private": true,
+   "exports": {
+     ".": "./tailwind.config.ts"
+   },
+   "devDependencies": {
+     "@repo/typescript-config": "workspace:*",
+     "tailwindcss": "^3.4.0"
+   }
+}
+```
+
 1. tailwind.config.ts:
-  ```
-   import type { Config } from "tailwindcss";
 
-   const config: Omit<Config, "content"> = {
-     theme: {
-       extend: {},
-     },
-     plugins: [],
-   };
+```
+ import type { Config } from "tailwindcss";
 
-   export default config;
-  ```
+ const config: Omit<Config, "content"> = {
+   theme: {
+     extend: {},
+   },
+   plugins: [],
+ };
+
+ export default config;
+```
+
 1. tsconfig.json:
-  ```
-  {
-    "extends": "@repo/typescript-config/base.json",
-    "include": ["."],
-    "exclude": ["dist", "build", "node_modules"]
-  }
-  ```
+
+```
+{
+  "extends": "@repo/typescript-config/base.json",
+  "include": ["."],
+  "exclude": ["dist", "build", "node_modules"]
+}
+```
+
 1. cd apps/web
 2. touch queries components types contexts hooks utils
 3. package.json > dependencies:
-  ```
- "@repo/tailwind-config": "workspace:*",
- "autoprefixer": "^10.4.16",
- "postcss": "^8.4.33",
- "tailwindcss": "^3.4.0",
-    react-query
-  ```
+
+```
+"@repo/tailwind-config": "workspace:*",
+"autoprefixer": "^10.4.16",
+"postcss": "^8.4.33",
+"tailwindcss": "^3.4.0",
+  react-query
+```
+
 1. package.json > devDependencies:
-  ```
-  ```
+
+```
+
+```
+
 1.  touch postcss.config.ts tailwind.config.ts
 
 ### Other Nice to Haves
+
 1. mkdir .vscode && touch extensions.json settings.json
 2. extensions.json:
-  ```
-  {
-  "recommendations": [
-      "streetsidesoftware.code-spell-checker",
-      //python
-      "charliermarsh.ruff", // formatter, linter, import sort
-      "ms-python.python", // intellisense, linter, formatter, refactoring
-      "KevinRose.vsc-python-indent", // indent formatter and linting
-      "njqdev.vscode-python-typehint", // type hinting
-      "ninoseki.vscode-pylens", // version suggestions
-      "tamasfe.even-better-toml", // toml formatter
-      //typescript
-      "dbaeumer.vscode-eslint", // linter
-      "pflannery.vscode-versionlens", // version suggestions
-      "esbenp.prettier-vscode", // formatter
-      "bradlc.vscode-tailwindcss", // tailwindcss intellisense
-     ]
-   }
-  ```
+
+```
+{
+"recommendations": [
+    "streetsidesoftware.code-spell-checker",
+    //python
+    "charliermarsh.ruff", // formatter, linter, import sort
+    "ms-python.python", // intellisense, linter, formatter, refactoring
+    "KevinRose.vsc-python-indent", // indent formatter and linting
+    "njqdev.vscode-python-typehint", // type hinting
+    "ninoseki.vscode-pylens", // version suggestions
+    "tamasfe.even-better-toml", // toml formatter
+    //typescript
+    "dbaeumer.vscode-eslint", // linter
+    "pflannery.vscode-versionlens", // version suggestions
+    "esbenp.prettier-vscode", // formatter
+    "bradlc.vscode-tailwindcss", // tailwindcss intellisense
+   ]
+ }
+```
+
 3. settings.json:
-  {
-  "editor.formatOnSave": true,
-  "editor.minimap.enabled": false, //preference
-  "editor.tabSize": 2, //preference
-  "files.autoSave": "afterDelay", //preference
-  "javascript.updateImportsOnFileMove.enabled": "prompt", //preference
-  "workbench.colorTheme": "Night Owl", //preference
-  "workbench.sideBar.location": "right", //preference
-  "workbench.editor.enablePreview": false, //preference
-  "[python]": {
-    "editor.defaultFormatter": "charliermarsh.ruff",
-    "editor.codeActionsOnSave": {
-      "source.fixAll": "always",
-      "source.organizeImports": "always"
-    }
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "always"
-    }
-  },
-  "ruff.lint.run": "onSave",
-  "cSpell.words": []
-  }
-  ```
+   {
+   "editor.formatOnSave": true,
+   "editor.minimap.enabled": false, //preference
+   "editor.tabSize": 2, //preference
+   "files.autoSave": "afterDelay", //preference
+   "javascript.updateImportsOnFileMove.enabled": "prompt", //preference
+   "workbench.colorTheme": "Night Owl", //preference
+   "workbench.sideBar.location": "right", //preference
+   "workbench.editor.enablePreview": false, //preference
+   "[python]": {
+   "editor.defaultFormatter": "charliermarsh.ruff",
+   "editor.codeActionsOnSave": {
+   "source.fixAll": "always",
+   "source.organizeImports": "always"
+   }
+   },
+   "[typescriptreact]": {
+   "editor.defaultFormatter": "esbenp.prettier-vscode",
+   "editor.codeActionsOnSave": {
+   "source.fixAll.eslint": "always"
+   }
+   },
+   "ruff.lint.run": "onSave",
+   "cSpell.words": []
+   }
+
+```
 
 
 ## Turborepo for Monorepo Management
@@ -200,3 +219,4 @@
 5. Run commands: poetry run <command>
 6. Validate the pyproject.toml file and check for compatibility issues: poetry check
 
+```
