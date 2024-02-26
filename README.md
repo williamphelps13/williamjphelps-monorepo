@@ -59,15 +59,60 @@
 12. poetry run uvicorn main:app --reload
 
 ### Next.js
+1. cd packages
+2. mkdir tailwind-config
+3. cd tailwind-config
+4. touch package.json tailwind.config.ts tsconfig.json
+5. package.json:
+  ```
+  {
+     "name": "@repo/tailwind-config",
+     "version": "0.0.0",
+     "private": true,
+     "exports": {
+       ".": "./tailwind.config.ts"
+     },
+     "devDependencies": {
+       "@repo/typescript-config": "workspace:*",
+       "tailwindcss": "^3.4.0"
+     }
+  }
+  ```
+1. tailwind.config.ts:
+  ```
+   import type { Config } from "tailwindcss";
+
+   const config: Omit<Config, "content"> = {
+     theme: {
+       extend: {},
+     },
+     plugins: [],
+   };
+
+   export default config;
+  ```
+1. tsconfig.json:
+  ```
+  {
+    "extends": "@repo/typescript-config/base.json",
+    "include": ["."],
+    "exclude": ["dist", "build", "node_modules"]
+  }
+  ```
 1. cd apps/web
 2. touch queries components types contexts hooks utils
 3. package.json > dependencies:
   ```
-    tailwind
+ "@repo/tailwind-config": "workspace:*",
+ "autoprefixer": "^10.4.16",
+ "postcss": "^8.4.33",
+ "tailwindcss": "^3.4.0",
     react-query
   ```
-4. package.json > devDependencies:
-
+1. package.json > devDependencies:
+  ```
+  ```
+1.  touch postcss.config.ts tailwind.config.ts
 
 ### Other Nice to Haves
 1. mkdir .vscode && touch extensions.json settings.json
