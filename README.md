@@ -193,10 +193,10 @@
 
 ### Commands
 1. turbo run <task-name> (run, lint, build)
-2. turbo run <task-name> --filter=... (use filters to target specific packages)
-3. Clear cache: turbo prune
-4. Add a package: turbo add <package-name> --filter=<specific-package>
-5. Remove a package: turbo remove <package-name> --filter=<specific-package>
+2. turbo run <task-name> --scope=<workspace> (use filters to target specific packages)
+3. Clear cache: turbo prune --scope=<workspace>
+4. Add a package: npm install <package-name> --workspace=<workspace>
+5. Remove a package: npm uninstall <package-name> --workspace=<workspace>
 6. Inspect the dependency graph: turbo graph
 7. Debug tasks: turbo run <task-name> --debug
 
