@@ -4,6 +4,6 @@
   "private": true,
   "scripts": {
     "dev": "poetry run uvicorn main:app --reload",
-    "lint": "ruff format"
+    "lint": "poetry run ruff format"
   }
 }
