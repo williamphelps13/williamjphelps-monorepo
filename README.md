@@ -4,7 +4,6 @@
 
 - `web`: [Next.js](https://nextjs.org/) app
 - `api`: [FastAPI](https://fastapi.tiangolo.com/) REST API
-- `@repo/ui`: React component library
 - `@repo/eslint-config`: `eslint` configurations
 - `@repo/typescript-config`
 
