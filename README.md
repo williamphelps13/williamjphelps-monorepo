@@ -12,8 +12,8 @@
 ### Turborepo setup
 
 1. npm install turbo --global (allows using the turbo command)
-2. npx create-turbo@latest inventory (creates a Turborepo starter repo)
-3. cd inventory
+2. npx create-turbo@latest <project-name> (creates a Turborepo starter repo)
+3. cd <project-name>
 4. code .
 5. rm -rf apps/docs (removes the nextjs static docs repo that comes in the starter)
 
