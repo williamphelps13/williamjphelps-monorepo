@@ -1,0 +1,17 @@
+{
+  "recommendations": [
+      "streetsidesoftware.code-spell-checker",
+      //python
+      "charliermarsh.ruff", // formatter, linter, import sort
+      "ms-python.python", // intellisense, linter, formatter, refactoring
+      "KevinRose.vsc-python-indent", // indent formatter and linting
+      "njqdev.vscode-python-typehint", // type hinting
+      "ninoseki.vscode-pylens", // version suggestions
+      "tamasfe.even-better-toml", // toml formatter
+      //typescript
+      "dbaeumer.vscode-eslint", // linter
+      "pflannery.vscode-versionlens", // version suggestions
+      "esbenp.prettier-vscode", // formatter
+      "bradlc.vscode-tailwindcss", // tailwindcss intellisense
+  ]
+}
