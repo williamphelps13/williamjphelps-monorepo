@@ -22,7 +22,6 @@ bcrypt_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 class CreateUserRequest(BaseModel):
     username: str = Field(min_length=3)
     password: str
-    admin: bool
 
     @validator("password")
     def password_validation(cls, value):
@@ -51,7 +50,6 @@ async def create_user(db: db_dependency, create_user_request: CreateUserRequest)
     create_user_model = Users(
         username=create_user_request.username,
         hashed_password=bcrypt_context.hash(create_user_request.password),
-        admin=create_user_request.admin,
     )
     db.add(create_user_model)
     db.commit()
@@ -59,12 +57,11 @@ async def create_user(db: db_dependency, create_user_request: CreateUserRequest)
     return {
         "username": create_user_model.username,
         "hashed_password": "Encrypted and saved successfully",
-        "admin": create_user_model.admin,
     }
 
 
-def create_access_token(id: int, username: str, admin: bool, expires_delta: timedelta):
-    encode = {"id": id, "username": username, "admin": admin}
+def create_access_token(id: int, username: str, expires_delta: timedelta):
+    encode = {"id": id, "username": username}
     expires = datetime.utcnow() + expires_delta
     encode.update({"exp": expires})
 
@@ -82,8 +79,6 @@ async def login_for_access_token(
             status_code=status.HTTP_401_UNAUTHORIZED, detail="Could not validate user."
         )
 
-    token = create_access_token(
-        user.id, user.username, user.admin, timedelta(minutes=20)
-    )
+    token = create_access_token(user.id, user.username, timedelta(minutes=60))
 
     return {"access_token": token, "token_type": "bearer"}

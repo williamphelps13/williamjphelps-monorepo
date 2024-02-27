@@ -29,7 +29,6 @@ async def get_current_user(token: Annotated[str, Depends(oauth2_bearer)]):
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
         id: int = payload.get("id")
         username: str = payload.get("username")
-        admin: bool = payload.get("admin")
 
         if id is None or username is None:
             raise HTTPException(
@@ -37,7 +36,7 @@ async def get_current_user(token: Annotated[str, Depends(oauth2_bearer)]):
                 detail="Could not validate user.",
             )
 
-        return {"id": id, "username": username, "admin": admin}
+        return {"id": id, "username": username}
     except JWTError:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED, detail="Could not validate user."

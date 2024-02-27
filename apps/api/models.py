@@ -11,7 +11,6 @@ class Users(Base):
     )  # purpose: to create a primary key column
     username = Column(String, unique=True)
     hashed_password = Column(String)
-    admin = Column(Boolean, default=False)
 
 
 class Todos(Base):
