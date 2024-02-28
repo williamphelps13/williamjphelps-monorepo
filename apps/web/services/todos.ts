@@ -1,8 +1,4 @@
-import { useQueryClient } from '@tanstack/react-query'
-
-export const getTodos = async () => {
-  const queryClient = useQueryClient()
-  const accessToken = queryClient.getQueryData(['accessToken']) as string
+export const getTodos = async (accessToken: string | undefined) => {
   const response = await fetch('http://127.0.0.1:8000/', {
     headers: {
       Authorization: `Bearer ${accessToken}`,
