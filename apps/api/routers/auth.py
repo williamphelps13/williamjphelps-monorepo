@@ -55,9 +55,21 @@ async def create_user(db: db_dependency, create_user_request: CreateUserRequest)
     db.add(create_user_model)
     db.commit()
 
+    user = authenticate_user(
+        create_user_request.username, create_user_request.password, db
+    )
+
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED, detail="Could not validate user."
+        )
+
+    token = create_access_token(user.id, user.username, timedelta(minutes=60))
+
     return {
-        "username": create_user_model.username,
-        "hashed_password": "Encrypted and saved successfully",
+        "email": create_user_model.username,
+        "access_token": token,
+        "token_type": "bearer",
     }
 
 
