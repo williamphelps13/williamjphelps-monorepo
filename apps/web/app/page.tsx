@@ -19,6 +19,7 @@ const useCreateUser = (onSuccess: () => void) => {
     onSuccess: (data) => {
       queryClient.setQueryData(['userEmail'], data.email)
       queryClient.setQueryData(['accessToken'], data.access_token)
+      localStorage.setItem('accessToken', data.access_token)
       if (onSuccess) onSuccess()
     },
   })
@@ -32,6 +33,7 @@ const useLoginUser = (onSuccess: () => void) => {
     onSuccess: (data) => {
       queryClient.setQueryData(['userEmail'], data.email)
       queryClient.setQueryData(['accessToken'], data.access_token)
+      localStorage.setItem('accessToken', data.access_token)
       if (onSuccess) onSuccess()
     },
   })
