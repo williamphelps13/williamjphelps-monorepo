@@ -1,6 +1,6 @@
 'use client'
 
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
@@ -13,22 +13,26 @@ type User = {
 }
 
 const useCreateUser = (onSuccess: () => void) => {
+  const queryClient = useQueryClient()
   const createMutation = useMutation({
     mutationFn: createUser,
-    onSuccess: () => {
-      if (onSuccess) {
-        onSuccess()
-      }
+    onSuccess: (data) => {
+      queryClient.setQueryData(['userEmail'], data.email)
+      queryClient.setQueryData(['accessToken'], data.access_token)
+      if (onSuccess) onSuccess()
     },
   })
   return createMutation
 }
 
 const useLoginUser = (onSuccess: () => void) => {
+  const queryClient = useQueryClient()
   const loginMutation = useMutation({
     mutationFn: loginUser,
-    onSuccess: () => {
-      onSuccess()
+    onSuccess: (data) => {
+      queryClient.setQueryData(['userEmail'], data.email)
+      queryClient.setQueryData(['accessToken'], data.access_token)
+      if (onSuccess) onSuccess()
     },
   })
   return loginMutation
