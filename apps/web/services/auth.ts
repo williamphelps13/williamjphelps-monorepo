@@ -18,17 +18,13 @@ export const createUser = async (apiUser: ApiUser) => {
 }
 
 export const loginUser = async (apiUser: ApiUser) => {
-  console.log(apiUser)
-  const response = await fetch(
-    'http://127.0.0.1:8000/auth/token',
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: new URLSearchParams(apiUser),
+  const response = await fetch('http://127.0.0.1:8000/auth/token', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
     },
-  )
+    body: new URLSearchParams(apiUser),
+  })
   if (!response.ok) {
     throw new Error(`HTTP error status: ${response.status}`)
   }
