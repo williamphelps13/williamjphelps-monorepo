@@ -31,6 +31,7 @@ class CreateUserRequest(BaseModel):
 class Token(BaseModel):
     access_token: str
     token_type: str
+    email: str
 
 
 def authenticate_user(username: str, password: str, db):
@@ -81,4 +82,4 @@ async def login_for_access_token(
 
     token = create_access_token(user.id, user.username, timedelta(minutes=60))
 
-    return {"access_token": token, "token_type": "bearer"}
+    return {"email": user.username, "access_token": token, "token_type": "bearer"}
