@@ -1,6 +1,6 @@
 'use client'
 
-import { useQuery } from '@tanstack/react-query'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { getTodos } from 'services/todos'
 
 type Todo = {
@@ -9,22 +9,30 @@ type Todo = {
   description: string
   complete: boolean
 }
-const useAllTodos = () => {
-  return useQuery({
-    queryKey: ['todos'],
-    queryFn: getTodos,
+
+function useTodos() {
+  const queryClient = useQueryClient()
+  const accessToken: string | undefined = queryClient.getQueryData([
+    'accessToken',
+  ])
+
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ['todos', accessToken],
+    queryFn: () => getTodos(accessToken),
   })
+
+  return { data, isLoading, isError }
 }
 
 const TodosPage = () => {
-  const { data, isLoading, isError } = useAllTodos()
+  const { data, isLoading, isError } = useTodos()
 
   if (isLoading) {
     return <div>Loading...</div>
   }
 
   if (isError) {
-    return <div>Error displaying todos</div>
+    return <div>Error</div>
   }
 
   return (
