@@ -192,13 +192,13 @@
 5. Remote Caching: Supports remote caching, allowing teams to share cache artifacts and further speed up build times across different machines and CI environments.
 
 ### Commands
-1. turbo run <task-name> (run, lint, build)
-2. turbo run <task-name> --scope=<workspace> (use filters to target specific packages)
+1. turbo <task-name> (dev, lint, build)
+2. turbo <task-name> --scope=<workspace> (use filters to target specific packages)
 3. Clear cache: turbo prune --scope=<workspace>
 4. Add a package: npm install <package-name> --workspace=<workspace>
 5. Remove a package: npm uninstall <package-name> --workspace=<workspace>
 6. Inspect the dependency graph: turbo graph
-7. Debug tasks: turbo run <task-name> --debug
+7. Debug tasks: turbo <task-name> --debug
 
 ## Poetry for Dependency Management
 ### Benefits
