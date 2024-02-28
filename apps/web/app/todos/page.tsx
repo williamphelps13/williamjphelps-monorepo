@@ -1,6 +1,7 @@
 'use client'
 
 import { useQuery, useQueryClient } from '@tanstack/react-query'
+import { useEffect } from 'react'
 import { getTodos } from 'services/todos'
 
 type Todo = {
@@ -10,8 +11,16 @@ type Todo = {
   complete: boolean
 }
 
-function useTodos() {
+const TodosPage = () => {
   const queryClient = useQueryClient()
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem('accessToken')
+    if (accessToken) {
+      queryClient.setQueryData(['accessToken'], accessToken)
+    }
+  }, [])
+
   const accessToken: string | undefined = queryClient.getQueryData([
     'accessToken',
   ])
@@ -20,12 +29,6 @@ function useTodos() {
     queryKey: ['todos', accessToken],
     queryFn: () => getTodos(accessToken),
   })
-
-  return { data, isLoading, isError }
-}
-
-const TodosPage = () => {
-  const { data, isLoading, isError } = useTodos()
 
   if (isLoading) {
     return <div>Loading...</div>
