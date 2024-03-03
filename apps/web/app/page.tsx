@@ -1,24 +1,17 @@
 'use client'
 
-import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { createUser, loginUser } from 'services/auth'
-
-type User = {
-  email: string
-  password: string
-  confirmPassword?: string
-}
+import { ApiUser, User } from 'types'
 
 const useCreateUser = (onSuccess: () => void) => {
-  const queryClient = useQueryClient()
   const createMutation = useMutation({
     mutationFn: createUser,
     onSuccess: (data) => {
-      queryClient.setQueryData(['userEmail'], data.email)
-      queryClient.setQueryData(['accessToken'], data.access_token)
+      localStorage.setItem('email', data.email)
       localStorage.setItem('accessToken', data.access_token)
       if (onSuccess) onSuccess()
     },
@@ -27,12 +20,10 @@ const useCreateUser = (onSuccess: () => void) => {
 }
 
 const useLoginUser = (onSuccess: () => void) => {
-  const queryClient = useQueryClient()
   const loginMutation = useMutation({
     mutationFn: loginUser,
     onSuccess: (data) => {
-      queryClient.setQueryData(['userEmail'], data.email)
-      queryClient.setQueryData(['accessToken'], data.access_token)
+      localStorage.setItem('email', data.email)
       localStorage.setItem('accessToken', data.access_token)
       if (onSuccess) onSuccess()
     },
@@ -58,7 +49,7 @@ const CreateOrLoginPage = () => {
   const loginUser = useLoginUser(onSuccess)
 
   const onSubmit: SubmitHandler<User> = (user) => {
-    const apiUser = {
+    const apiUser: ApiUser = {
       username: user.email,
       password: user.password,
     }
@@ -84,7 +75,7 @@ const CreateOrLoginPage = () => {
             Create account
           </button>
           <button
-            className={`tab ${createMode ? '' : 'tab-active'}`}
+            className={`tab ${!createMode ? 'tab-active' : ''}`}
             onClick={() => setCreateMode(false)}
             role="tab"
           >
