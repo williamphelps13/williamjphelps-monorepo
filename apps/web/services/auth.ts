@@ -1,7 +1,4 @@
-type ApiUser = {
-  username: string
-  password: string
-}
+import { ApiUser } from 'types'
 
 export const createUser = async (apiUser: ApiUser) => {
   const response = await fetch('http://127.0.0.1:8000/auth', {
