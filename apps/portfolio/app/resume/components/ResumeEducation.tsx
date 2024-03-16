@@ -1,69 +1,53 @@
 import Image from 'next/image'
-import education1Image from 'app/resume/images/education-2.jpg'
-import education2Image from 'app/resume/images/education-2.jpg'
-import education3Image from 'app/resume/images/education-3.jpg'
+import { EducationData } from 'app/resume/types'
 
-const education = [
-  {
-    organization: 'Turing School of Software and Design',
-    image: education1Image,
-    link: 'https://turing.edu/',
-    location: 'Denver, CO',
-    year: '2021',
-    result:
-      'Front End Software Engineer - JavaScript, TypeScript, React, REST, CSS, HTML, Cypress, Git/Github',
-    details: [
-      '1500hr, 7 month project-based program; collaborated with 1 to 5 team members on 12 projects',
-    ],
-  },
-  {
-    organization: 'California State University, Long Beach',
-    image: education2Image,
-    link: 'https://www.csulb.edu/',
-    location: 'Long Beach, CA',
-    year: '2013',
-    result:
-      'Pre-Med earning a Bachelor of Arts in World Literature, Minor in Chemistry; 3.7 GPA',
-    details: [
-      'Technical Courses Include: Calc I & II, Physics I & II, Gen Chem I & II, O-Chem I & II',
-    ],
-  },
-  {
-    organization: 'AWS',
-    image: education3Image,
-    link: 'https://aws.amazon.com/certification/certified-cloud-practitioner/',
-    year: '2023',
-    result: 'Cloud Practitioner Certification',
-  },
-]
-
-const ResumeEducation = () => {
+const ResumeEducation = ({
+  educationData,
+}: {
+  educationData: EducationData
+}) => {
   return (
-    <section>
-      <h2>Education and Certifications</h2>
-      {education.map(
-        ({ organization, link, image, location, result, year, details }) => (
-          <article key={`${organization}-${year}}`}>
-            <h3>
-              <a href={link} target="_blank" rel="noopener noreferrer">
-                {organization}
-              </a>
-            </h3>
-            <Image
-              src={image}
-              alt={`${organization}`}
-              width={150}
-              height={150}
-            />
-            <p>{location}</p>
-            <p>{year}</p>
-            <h4>{result}</h4>
-            <ul>
-              {details?.map((detail, index) => <li key={index}>{detail}</li>)}
-            </ul>
-          </article>
-        ),
-      )}
+    <section className="flex flex-col space-y-4 md:space-y-8">
+      <h2 className="section-heading">Education</h2>
+      {educationData.map((education) => (
+        <article
+          className="space-y-1 md:space-y-2"
+          key={`${education?.organization}-${education?.date}}`}
+        >
+          <div className="flex justify-between">
+            <span className="flex gap-4 md:gap-8">
+              <h3 className="tertiary-heading">
+                <a
+                  className="link rounded p-0"
+                  href={education?.link}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  title={`${education?.organization} website`}
+                >
+                  {education.image && (
+                    <Image
+                      src={education?.image}
+                      alt={`${education?.organization} logo`}
+                      height={28}
+                    />
+                  )}
+                  {education?.organization}
+                </a>
+              </h3>
+              <p className="normal-body leading-7">{education?.location}</p>
+            </span>
+            <p className="normal-body leading-7">{education?.date}</p>
+          </div>
+          <h4 className="important-body">{education?.result}</h4>
+          <ul className="ml-4 list-disc">
+            {education?.descriptions?.map((description, index) => (
+              <li className="normal-body" key={index}>
+                {description}
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
     </section>
   )
 }
