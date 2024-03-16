@@ -1,3 +1,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .primary-heading {
+    @apply text-4xl md:text-6xl font-semibold;
+  }
+
+  .secondary-heading {
+    @apply text-xl md:text-3xl font-semibold text-center md:text-left font-body;
+  }
+
+  .section-heading {
+    @apply secondary-heading underline underline-offset-8;
+  }
+
+  .tertiary-heading {
+    @apply text-lg md:text-xl font-semibold font-body;
+  }
+
+  .important-body {
+    @apply text-sm md:text-base font-bold font-body;
+  }
+
+  .normal-body {
+    @apply text-sm md:text-base font-normal font-body;
+  }
+
+  .fine-body {
+    @apply text-sm md:text-base font-light font-body;
+  }
+
+  .link {
+    @apply flex flex-nowrap items-center gap-1 md:gap-2 rounded-full p-2 transition-colors hover:bg-gray-100  focus-visible:outline-neutral-500 md:p-4
+  }
+}
