@@ -6,23 +6,15 @@ import {
   HomeModernIcon,
   PhoneIcon,
 } from '@heroicons/react/24/outline'
-import { Lobster } from 'next/font/google'
+import { Handlee } from 'next/font/google'
 
-const lobster = Lobster({ weight: '400', subsets: ['latin'] })
+const handlee = Handlee({ weight: '400', subsets: ['latin'] })
 
 const ResumeHeader = ({ headerData }: { headerData: HeaderData }) => {
   return (
     <header className="flex flex-col items-center gap-4 lg:flex-row lg:items-start lg:justify-between lg:gap-8">
-      {headerData.headshotImage && (
-        <Image
-          alt={`${headerData?.fullName} Headshot`}
-          className="rounded-lg shadow lg:hidden"
-          src={headerData?.headshotImage}
-          width={80}
-        />
-      )}
       <div className="flex flex-col items-center gap-4 lg:items-start lg:gap-12">
-        <h1 className={`primary-heading ${lobster.className}`}>
+        <h1 className={`primary-heading ${handlee.className}`}>
           {headerData?.fullName}
         </h1>
         <h2 className="secondary-heading">{headerData?.title}</h2>
@@ -67,6 +59,14 @@ const ResumeHeader = ({ headerData }: { headerData: HeaderData }) => {
           </a>
         </address>
       </div>
+      {headerData.headshotImage && (
+        <Image
+          alt={`${headerData?.fullName} Headshot`}
+          className="rounded-lg shadow lg:hidden"
+          src={headerData?.headshotImage}
+          width={240}
+        />
+      )}
     </header>
   )
 }

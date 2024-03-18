@@ -10,7 +10,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        'pop': ['Lobster', 'sans-serif'],
+        'pop': ['Handlee', 'sans-serif'],
         'body': ['Calibri', 'sans-serif'],
       },
       backgroundImage: {
