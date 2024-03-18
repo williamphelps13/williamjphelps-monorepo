@@ -2,11 +2,14 @@
 
 import { TechStackData } from 'app/resume/types'
 import { useState } from 'react'
+import { type Theme } from 'hooks'
 
 const ResumeTechStack = ({
   techStackData,
+  theme,
 }: {
   techStackData: TechStackData
+  theme: Theme
 }) => {
   const [projectsVisible, setProjectsVisible] = useState('')
 
@@ -14,19 +17,21 @@ const ResumeTechStack = ({
     (techStack) => techStack.tech === projectsVisible,
   )
   return (
-    <section className="space-y-4 md:space-y-8">
+    <section className="space-y-4 lg:space-y-8">
       <h2 className="section-heading">Tech Stack</h2>
-      <ul className="flex flex-wrap gap-x-3 gap-y-2 md:gap-x-6 md:gap-y-4">
+      <ul className="flex flex-wrap gap-x-3 gap-y-2 lg:gap-x-6 lg:gap-y-4">
         {techStackData?.map((techStack) => (
           <li key={techStack.tech}>
             <button
-              className={`normal-body flex items-center justify-center rounded-full p-2 shadow outline outline-gray-300 transition-shadow hover:shadow-lg focus-visible:outline-4 focus-visible:outline-neutral-500 md:min-w-40 md:p-4 ${projectsVisible === techStack.tech ? 'outline-4 !outline-blue-500' : ''}`}
+              className={`normal-body flex items-center justify-center rounded-full p-2 shadow outline outline-gray-300 transition-shadow hover:bg-gray-50 hover:shadow-lg focus-visible:outline-4 focus-visible:outline-neutral-500 lg:min-w-40 lg:p-4 dark:hover:bg-gray-700 dark:focus-visible:outline-neutral-300 ${projectsVisible === techStack.tech && 'outline-[6px] outline-gray-700 dark:outline-gray-100'}`}
               title={`Learn more about my experience with ${techStack.tech}`}
               onClick={() => setProjectsVisible(techStack.tech)}
             >
               {techStack?.iconName && (
                 <i
-                  className={`devicon-${techStack?.iconName}-plain colored mr-2 text-lg md:mr-4 md:text-2xl`}
+                  className={`devicon-${techStack?.iconName}-plain ${
+                    theme === 'light' && 'colored'
+                  } mr-2 text-lg lg:mr-4 lg:text-2xl`}
                 ></i>
               )}
               {techStack.tech}
@@ -35,7 +40,7 @@ const ResumeTechStack = ({
         ))}
       </ul>
       {projectsVisible && visibleTechStack && (
-        <article className="space-y-1 md:space-y-2">
+        <article className="space-y-1 lg:space-y-2">
           <h3 className="tertiary-heading">
             {projectsVisible} — Projects and PRs
           </h3>

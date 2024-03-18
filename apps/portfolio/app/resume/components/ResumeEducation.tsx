@@ -7,15 +7,15 @@ const ResumeEducation = ({
   educationData: EducationData
 }) => {
   return (
-    <section className="flex flex-col space-y-4 md:space-y-8">
+    <section className="flex flex-col space-y-4 lg:space-y-8">
       <h2 className="section-heading">Education</h2>
       {educationData.map((education) => (
         <article
-          className="space-y-1 md:space-y-2"
+          className="space-y-1 lg:space-y-2"
           key={`${education?.organization}-${education?.date}}`}
         >
-          <div className="flex justify-between">
-            <span className="flex gap-4 md:gap-8">
+          <div className="flex justify-between gap-2 lg:gap-4">
+            <span className="flex gap-4 lg:gap-8">
               <h3 className="tertiary-heading">
                 <a
                   className="link rounded p-0"
