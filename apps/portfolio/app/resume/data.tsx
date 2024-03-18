@@ -14,7 +14,7 @@ import {
 } from 'app/resume/types'
 
 export const headerData: HeaderData = {
-  fullName: 'William J. Phelps',
+  fullName: 'William Phelps',
   headshotImage: headshot,
   title: 'Senior Software Engineer',
   location: 'Denver, Colorado',
