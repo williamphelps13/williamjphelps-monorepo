@@ -1,5 +1,33 @@
 {
   "name": "williamjphelps-monorepo",
+  "version": "0.0.1",
+  "author": {
+    "name": "William Phelps",
+    "email": "williamphelps13@gmail.com"
+  },
+  "license": "MIT",
+  "description": "A monorepo for my personal projects",
+  "keywords": [
+    "NextJS",
+    "React",
+    "Component Library",
+    "Storybook",
+    "Tailwindcss",
+    "Design System",
+    "GraphQL",
+    "Apollo",
+    "Monorepo",
+    "FastAPI",
+    "Python"
+  ],
+  "homepage": "https://github.com/williamphelps13/williamjphelps-monorepo",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/williamphelps13/williamjphelps-monorepo"
+  },
+  "bugs": {
+    "url": "https://github.com/williamphelps13/williamjphelps-monorepo/issues"
+  },
   "private": true,
   "scripts": {
     "build": "turbo build",
@@ -11,8 +39,8 @@
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
     "prettier": "^3.2.5",
-    "prettier-plugin-tailwindcss": "^0.5.11",
-    "turbo": "latest"
+    "prettier-plugin-tailwindcss": "^0.5.14",
+    "turbo": "^1.13.3"
   },
   "engines": {
     "node": ">=18"
@@ -23,3 +51,4 @@
     "packages/*"
   ]
 }
+
