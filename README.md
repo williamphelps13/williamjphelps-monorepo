@@ -2,8 +2,8 @@
 
 ## Apps and Packages
 
-- `web`: [Next.js](https://nextjs.org/) app
-- `api`: [FastAPI](https://fastapi.tiangolo.com/) REST API
+- `will-do-web`: [Next.js](https://nextjs.org/) app
+- `will-do-api`: [FastAPI](https://fastapi.tiangolo.com/) REST API
 - `@repo/eslint-config`: `eslint` configurations
 - `@repo/typescript-config`
 
@@ -21,8 +21,8 @@
 
 1. curl -sSL https://install.python-poetry.org | python3 (download poetry dependency management)
 2. echo 'export PATH="/Users/williamphelps/.local/bin:$PATH"' >> ~/.zshrc (adds poetry to the PATH to be able to be used)
-3. poetry new apps/api
-4. cd apps/api
+3. poetry new apps/will-do-api
+4. cd apps/will-do-api
 5. pyproject.toml > [tool.poetry.dependencies]:
    ```
    bcrypt
@@ -46,7 +46,7 @@
 8. touch package.json:
    ```
    {
-     "name": "api",
+     "name": "will-do-api",
      "version": "1.0.0",
      "private": true,
      "scripts": {
@@ -108,7 +108,7 @@
 }
 ```
 
-1. cd apps/web
+1. cd apps/will-do-web
 2. touch queries components types contexts hooks utils
 3. package.json > dependencies:
 

@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "api"
+name = "will-do-api"
 version = "0.1.0"
-description = ""
+description = "To do API"
 authors = ["William Phelps <williamphelps13@gmail.com>"]
 readme = "README.md"
 
