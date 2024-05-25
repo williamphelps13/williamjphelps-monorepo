@@ -26,11 +26,9 @@ const Home = () => {
             </div>
           </div>
           <img
-            width={280}
-            height={420}
+            className="max-w-72 rounded-lg shadow-lg"
             src="images/headshot-main.jpg"
             alt="My headshot"
-            className="rounded-lg shadow-lg"
           />
         </section>
 

@@ -25,9 +25,9 @@ const ResumeExperience = ({
                 >
                   {experience.image && (
                     <img
+                      className="max-h-7"
                       src={experience?.image}
                       alt={`${experience?.organization} logo`}
-                      height={28}
                     />
                   )}
                   {experience?.organization}

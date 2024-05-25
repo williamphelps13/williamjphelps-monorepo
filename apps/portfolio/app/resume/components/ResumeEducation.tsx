@@ -25,9 +25,9 @@ const ResumeEducation = ({
                 >
                   {education.image && (
                     <img
+                      className="max-h-7"
                       src={education?.image}
                       alt={`${education?.organization} logo`}
-                      height={28}
                     />
                   )}
                   {education?.organization}

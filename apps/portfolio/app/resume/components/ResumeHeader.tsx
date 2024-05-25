@@ -22,9 +22,8 @@ const ResumeHeader = ({ headerData }: { headerData: HeaderData }) => {
         {headerData.headshotImage && (
           <img
             alt={`${headerData?.fullName} Headshot`}
-            className="hidden rounded-xl shadow lg:block"
+            className="hidden rounded-xl shadow lg:block max-w-40"
             src={headerData?.headshotImage}
-            width={160}
           />
         )}
         <address className="important-body flex flex-wrap justify-center gap-1 not-italic lg:flex-col lg:gap-2">
@@ -61,9 +60,8 @@ const ResumeHeader = ({ headerData }: { headerData: HeaderData }) => {
       {headerData.headshotImage && (
         <img
           alt={`${headerData?.fullName} Headshot`}
-          className="rounded-lg shadow lg:hidden"
+          className="rounded-lg shadow lg:hidden max-w-60"
           src={headerData?.headshotImage}
-          width={240}
         />
       )}
     </header>
