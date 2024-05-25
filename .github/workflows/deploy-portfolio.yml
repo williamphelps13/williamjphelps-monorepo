@@ -1,4 +1,4 @@
-name: Deploy Application
+name: Deploy Portfolio App
 
 on:
   push:
@@ -24,11 +24,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
-
-      - name: Navigate to Portfolio Directory
-        working-directory: ./apps/portfolio
-        run: echo "Navigating to portfolio directory"
+          node-version: '20'
 
       - name: Install Dependencies
         working-directory: ./apps/portfolio
@@ -36,11 +32,11 @@ jobs:
 
       - name: Build Site
         working-directory: ./apps/portfolio
-        run: npm run build
+        run: next build
 
       - name: Export Static Site
         working-directory: ./apps/portfolio
-        run: npm run export
+        run: next export
 
       - name: Deploy Application
         run: aws s3 sync ./apps/portfolio/out s3://${{ secrets.AWS_S3_BUCKET_NAME }} --delete
