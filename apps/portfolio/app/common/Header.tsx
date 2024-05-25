@@ -7,7 +7,7 @@ const Header = () => {
         <Link className="flex items-center" href="/">
           <svg
             aria-hidden="true"
-            className="h-7 fill-cyan-800 transition duration-300"
+            className="h-7 fill-cyan-800 transition duration-300 mr-2"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 640 512"
           >
