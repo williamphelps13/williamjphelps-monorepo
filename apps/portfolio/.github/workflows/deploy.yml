@@ -1,0 +1,49 @@
+name: Deploy Application
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Navigate to Portfolio Directory
+        working-directory: ./apps/portfolio
+        run: echo "Navigating to portfolio directory"
+
+      - name: Install Dependencies
+        working-directory: ./apps/portfolio
+        run: npm install
+
+      - name: Build Site
+        working-directory: ./apps/portfolio
+        run: npm run build
+
+      - name: Export Static Site
+        working-directory: ./apps/portfolio
+        run: npm run export
+
+      - name: Deploy Application
+        run: aws s3 sync ./apps/portfolio/out s3://${{ secrets.AWS_S3_BUCKET_NAME }} --delete
+
+      - name: Invalidate CloudFront Cache
+        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"

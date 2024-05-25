@@ -2,14 +2,11 @@
 
 import { TechStackData } from 'app/resume/types'
 import { useState } from 'react'
-import { type Theme } from 'hooks'
 
 const ResumeTechStack = ({
   techStackData,
-  theme,
 }: {
   techStackData: TechStackData
-  theme: Theme
 }) => {
   const [projectsVisible, setProjectsVisible] = useState('')
 
@@ -29,9 +26,7 @@ const ResumeTechStack = ({
             >
               {techStack?.iconName && (
                 <i
-                  className={`devicon-${techStack?.iconName}-plain ${
-                    theme === 'light' && 'colored'
-                  } mr-2 text-lg lg:mr-4 lg:text-2xl`}
+                  className={`devicon-${techStack?.iconName}-plain colored mr-2 text-lg lg:mr-4 lg:text-2xl`}
                 ></i>
               )}
               {techStack.tech}
