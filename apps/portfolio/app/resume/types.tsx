@@ -1,8 +1,6 @@
-import { StaticImageData } from 'next/image'
-
 export type HeaderData = {
   fullName: string
-  headshotImage?: StaticImageData
+  headshotImage?: string
   title?: string
   location?: string
   phone?: string
@@ -21,7 +19,7 @@ export type TechStackData = TechStack[]
 type Experience = {
   organization?: string
   link?: string
-  image?: StaticImageData
+  image?: string
   location?: string
   date?: string
   title?: string
@@ -33,7 +31,7 @@ export type ExperienceData = Experience[]
 type Education = {
   organization?: string
   link?: string
-  image?: StaticImageData
+  image?: string
   location?: string
   date?: string
   result?: string

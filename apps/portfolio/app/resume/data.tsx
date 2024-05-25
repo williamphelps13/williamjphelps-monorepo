@@ -1,11 +1,3 @@
-import awsLogo from 'app/resume/images/aws-logo.png'
-import boulderWineLogo from 'app/resume/images/boulder-wine-logo.png'
-import coaLogo from 'app/resume/images/coa-logo.png'
-import csulbLogo from 'app/resume/images/csulb-logo.webp'
-import headshot from 'app/resume/images/headshot.jpg'
-import turingLogo from 'app/resume/images/turing-logo.png'
-import webscaleLogo from 'app/resume/images/webscale-logo.png'
-
 import {
   HeaderData,
   ExperienceData,
@@ -15,7 +7,7 @@ import {
 
 export const headerData: HeaderData = {
   fullName: 'William Phelps',
-  headshotImage: headshot,
+  headshotImage: 'images/headshot-main.jpg',
   title: 'Senior Software Engineer',
   location: 'Denver, Colorado',
   phone: '(707) 533-9586',
@@ -115,7 +107,7 @@ export const experienceData: ExperienceData = [
   {
     organization: 'Coa Solutions',
     link: 'https://coa.solutions/',
-    image: coaLogo,
+    image: 'images/coa-logo.png',
     location: 'Remote',
     date: 'Oct 2023 – Present',
     title: 'Fullstack Software Engineer',
@@ -127,7 +119,7 @@ export const experienceData: ExperienceData = [
   {
     organization: 'Webscale Networks',
     link: 'https://www.webscale.com/',
-    image: webscaleLogo,
+    image: 'images/webscale-logo.png',
     location: 'Boulder, Colorado',
     date: 'Nov 2021 – Oct 2023',
     title: 'Software Engineer',
@@ -139,7 +131,7 @@ export const experienceData: ExperienceData = [
   {
     organization: 'Boulder Wine Merchant',
     link: 'https://www.boulderwine.com/',
-    image: boulderWineLogo,
+    image: 'images/boulder-wine-logo.png',
     location: 'Boulder, Colorado',
     date: 'Feb 2017 – March 2021',
     title: 'Manager, Buyer, and Certified Sommelier',
@@ -154,7 +146,7 @@ export const educationData: EducationData = [
   {
     organization: 'Turing School of Software and Design',
     link: 'https://turing.edu/',
-    image: turingLogo,
+    image: 'images/turing-logo.png',
     location: 'Denver, CO',
     date: 'May 2021 – Nov 2021',
     result: 'Frontend Engineering Program Completion',
@@ -166,7 +158,7 @@ export const educationData: EducationData = [
   {
     organization: 'California State University, Long Beach',
     link: 'https://www.csulb.edu/',
-    image: csulbLogo,
+    image: 'images/csulb-logo.webp',
     location: 'Long Beach, CA',
     date: 'Sep 2009 – Dec 2013',
     result: 'Pre-Med, Bachelor of Arts in World Literature',
@@ -178,7 +170,7 @@ export const educationData: EducationData = [
   {
     organization: 'Amazon Web Services',
     link: 'https://aws.amazon.com/certification/certified-cloud-practitioner/',
-    image: awsLogo,
+    image: 'images/aws-logo.png',
     date: 'Apr 2023',
     result: 'AWS Certified Cloud Practitioner',
   },

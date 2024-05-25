@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { HeaderData } from 'app/resume/types'
 import {
   AtSymbolIcon,
@@ -21,7 +20,7 @@ const ResumeHeader = ({ headerData }: { headerData: HeaderData }) => {
       </div>
       <div className="flex flex-col items-center gap-4 lg:flex-row lg:gap-8">
         {headerData.headshotImage && (
-          <Image
+          <img
             alt={`${headerData?.fullName} Headshot`}
             className="hidden rounded-xl shadow lg:block"
             src={headerData?.headshotImage}
@@ -60,7 +59,7 @@ const ResumeHeader = ({ headerData }: { headerData: HeaderData }) => {
         </address>
       </div>
       {headerData.headshotImage && (
-        <Image
+        <img
           alt={`${headerData?.fullName} Headshot`}
           className="rounded-lg shadow lg:hidden"
           src={headerData?.headshotImage}

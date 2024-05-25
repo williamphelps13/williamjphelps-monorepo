@@ -1,5 +1,3 @@
-import Image from 'next/image'
-
 import Header from 'app/common/Header'
 
 const Home = () => {
@@ -27,10 +25,10 @@ const Home = () => {
               </p>
             </div>
           </div>
-          <Image
+          <img
             width={280}
             height={420}
-            src="/images/headshot.jpg"
+            src="images/headshot-main.jpg"
             alt="My headshot"
             className="rounded-lg shadow-lg"
           />

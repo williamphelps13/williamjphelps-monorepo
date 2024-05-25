@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { ExperienceData } from 'app/resume/types'
 
 const ResumeExperience = ({
@@ -25,7 +24,7 @@ const ResumeExperience = ({
                   title={`${experience?.organization} website`}
                 >
                   {experience.image && (
-                    <Image
+                    <img
                       src={experience?.image}
                       alt={`${experience?.organization} logo`}
                       height={28}

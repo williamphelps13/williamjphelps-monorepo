@@ -1,20 +1,18 @@
-import Link from 'next/link'
-
 const Header = () => {
   return (
     <header className="mx-auto flex max-w-screen-xl flex-col items-center gap-2 px-8 pt-8 md:flex-row md:justify-between md:gap-4 xl:px-0">
       <h1 className="flex items-center gap-4 text-2xl transition duration-300">
-        <Link className="flex items-center" href="/">
+        <a className="flex items-center" href="/">
           <svg
             aria-hidden="true"
-            className="h-7 fill-cyan-800 transition duration-300 mr-2"
+            className="mr-2 h-7 fill-cyan-800 transition duration-300"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 640 512"
           >
             <path d="M64 96c0-35.3 28.7-64 64-64H512c35.3 0 64 28.7 64 64V352H512V96H128V352H64V96zM0 403.2C0 392.6 8.6 384 19.2 384H620.8c10.6 0 19.2 8.6 19.2 19.2c0 42.4-34.4 76.8-76.8 76.8H76.8C34.4 480 0 445.6 0 403.2zM281 209l-31 31 31 31c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-48-48c-9.4-9.4-9.4-24.6 0-33.9l48-48c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9zM393 175l48 48c9.4 9.4 9.4 24.6 0 33.9l-48 48c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l31-31-31-31c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0z" />
           </svg>
           William Phelps
-        </Link>
+        </a>
       </h1>
       <nav className="flex flex-col items-center gap-2 md:flex-row md:gap-4">
         <ul className="flex items-center">
@@ -27,28 +25,28 @@ const Header = () => {
             </a>
           </li>
           <li>
-            <Link
-              href="/projects"
+            <a
+              href="/projects.html"
               className="rounded-md px-4 py-2 font-mono transition duration-300 hover:bg-teal-400 hover:text-pink-700"
             >
               Projects
-            </Link>
+            </a>
           </li>
           <li>
-            <Link
-              href="/about"
+            <a
+              href="/about.html"
               className="rounded-md px-4 py-2 font-mono transition duration-300 hover:bg-teal-400 hover:text-pink-700"
             >
               About
-            </Link>
+            </a>
           </li>
           <li>
-            <Link
-              href="/contact"
+            <a
+              href="/contact.html"
               className="rounded-md px-4 py-2 font-mono transition duration-300 hover:bg-teal-400 hover:text-pink-700"
             >
               Contact
-            </Link>
+            </a>
           </li>
           <li>
             <a
@@ -87,12 +85,12 @@ const Header = () => {
             </a>
           </li>
         </ul>
-        <Link
-          href="/resume"
+        <a
+          href="/resume.html"
           className="flex items-center justify-center rounded-md bg-pink-600 px-4 py-2 font-mono text-black transition duration-300 hover:bg-pink-400"
         >
           Resume
-        </Link>
+        </a>
       </nav>
     </header>
   )

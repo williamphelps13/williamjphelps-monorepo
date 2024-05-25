@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { EducationData } from 'app/resume/types'
 
 const ResumeEducation = ({
@@ -25,7 +24,7 @@ const ResumeEducation = ({
                   title={`${education?.organization} website`}
                 >
                   {education.image && (
-                    <Image
+                    <img
                       src={education?.image}
                       alt={`${education?.organization} logo`}
                       height={28}
