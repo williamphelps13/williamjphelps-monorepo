@@ -154,6 +154,7 @@
 ```
 
 3. settings.json:
+```
    {
    "editor.formatOnSave": true,
    "editor.minimap.enabled": false, //preference
@@ -217,6 +218,3 @@
 4. Update all dependencies: poetry update
 5. Run commands: poetry run <command>
 6. Validate the pyproject.toml file and check for compatibility issues: poetry check
-
-## FastAPI Todos
-
