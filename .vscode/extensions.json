@@ -10,7 +10,7 @@
       "tamasfe.even-better-toml", // toml formatter
       //typescript
       "dbaeumer.vscode-eslint", // linter
-      "pflannery.vscode-versionlens", // version suggestions
+      "legalfina.npm-version-lens", // version suggestions
       "esbenp.prettier-vscode", // formatter
       "bradlc.vscode-tailwindcss", // tailwindcss intellisense
   ]
